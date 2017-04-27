@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name=viewport content='width=device-width, initial-scale=1'>
+    <style>
+        * {
+            box-sizing: content-box;
+            font: bold 100% /1.2 Arial;
+        }
+        .top {
+            display: flex;
+            width: 98vw;
+            text-align: center;
+        }
+        .top div {
+            font-size: 11vw;
+            flex: 1;
+            margin: 1vw;
+            padding: 1vw;
+            background: #eee;
+        }
+        .bat {
+            display: flex;
+            width: 97vw;
+            margin: 2vw 0.5vw;
+            position: relative;
+            counter-increment: bat;
+        }
+        .bat:before {
+            content: "Akku " counter(bat);
+            position: absolute;
+            top: -1em;
+            left: 0.3em;
+            font-size: 2vw;
+        }
+        .bat * {
+            text-align: center;
+            font-size: 6vw;
+            padding: 0.5vw 1vw;
+            margin: 0.5vw;
+            flex: 1;
+            background: #eee;
+        }
+        
+       div.ok {
+            background: #6d2;
+        }
+        div.low {
+            background: #fc0;
+        }
+        div.crit {
+            background: #b00;
+            color: #fff;
+        }
+    </style>
+    
+    <script>
+        
+        function test() {
+            volt = parseFloat(document.getElementById('volt').innerHTML);
+            
+            if (volt > 4) {
+                document.getElementById("volt").className = "ok";
+            }
+            else if (volt < 3.7) {
+                document.getElementById("volt").className = "low";
+            }
+            else if (volt < 3.5) {
+                document.getElementById("volt").className = "crit";
+            }
+            else {
+                document.getElementById("volt").className = "";
+            }
+        }
+    </script>
+
+
+</head>
+
+<body onload="test();">
+
+    <div class="top">
+        <div id="volt">3.45 V</div><div>19,03 A</div>
+    </div>
+    <div class="bat">
+        <div class="ok">1,53</div>
+        <div>1,53</div>
+        <div>3,53</div>
+        <div>4,53</div>
+        <div>5,53</div>
+    </div>
+    <div class="bat">
+        <div class="crit">1,53</div>
+        <div class="low">1,53</div>
+        <div>3,53</div>
+        <div>4,53</div>
+        <div>5,53</div>
+    </div>
+    
+</body>
+
+</html>
